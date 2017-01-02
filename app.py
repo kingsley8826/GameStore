@@ -26,8 +26,8 @@ parser.add_argument("name", type=str, location="json")
 parser.add_argument("rating", type=float, location="json")
 
 
-# n = Store(longitude="20.20", latitude="15.15", telephone_number="0988123123", name = "thien duong")
-# n.save()
+ #n = Store(longitude="20.20", latitude="15.15", telephone_number="0988123123", name = "thien duong")
+ #n.save()
 
 # for note in Note.objects:
  #   print(note.to_json())
