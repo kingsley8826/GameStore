@@ -13,6 +13,7 @@ class Store(Document):
     latitude = StringField()
     telephone_number = StringField()
     name = StringField()
+    rating = FloatField()
 
 app = Flask(__name__)
 
