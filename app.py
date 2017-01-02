@@ -8,8 +8,6 @@ import json
 
 mlab.connect()
 
-app = Flask(__name__)
-
 class Store(Document):
     longitude = StringField()
     latitude = StringField()
@@ -25,6 +23,7 @@ parser.add_argument("longitude", type=str, location="json")
 parser.add_argument("latitude", type=str, location="json")
 parser.add_argument("telephone_number", type=str, location="json")
 parser.add_argument("name", type=str, location="json")
+parser.add_argument("rating", type=float, location="json")
 
 
 # n = Store(longitude="20.20", latitude="15.15", telephone_number="0988123123", name = "thien duong")
@@ -36,7 +35,7 @@ parser.add_argument("name", type=str, location="json")
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return 'Luu ham'
 
 class StoreListRes(Resource):
     def get(self): # Get All Notes
@@ -47,14 +46,15 @@ class StoreListRes(Resource):
         latitude = args["latitude"]
         telephone_number = args["telephone_number"]
         name = args["name"]
-        new_store = Store(longitude=longitude, latitude=latitude, telephone_number=telephone_number, name=name)
+        rating = args["rating"]
+        new_store = Store(longitude=longitude, latitude=latitude, telephone_number=telephone_number, name=name, rating=rating)
         new_store.save()
         return mlab.item2json(new_store)
 
 class StoreRes(Resource):
-    def get(self, note_id):
+    def get(self, store_id):
         all_stores = Store.objects
-        found_store = all_stores.with_id(note_id)
+        found_store = all_stores.with_id(store_id)
         return mlab.item2json(found_store)
     def delete(self, store_id):
         all_stores = Store.objects
@@ -69,12 +69,13 @@ class StoreRes(Resource):
         latitude = args["latitude"]
         telephone_number = args["telephone_number"]
         name = args["name"]
-        found_store.update(set__longitude=longitude, set__latitude=latitude, set__telephone_number=telephone_number, set__name=name)
+        rating = args["rating"]
+        found_store.update(set__longitude=longitude, set__latitude=latitude,
+                           set__telephone_number=telephone_number, set__name=name, set__rating=rating)
         return {"code": 1, "status": "Ok"}, 200
 
 api.add_resource(StoreListRes, "/api/store")
 api.add_resource(StoreRes, "/api/store/<store_id>")
-
 
 if __name__ == '__main__':
     app.run()
