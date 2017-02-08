@@ -40,3 +40,10 @@ class HotelRes(Resource):
         found_hotel.update(set__longitude=longitude, set__latitude=latitude, set__telephone_number=telephone_number,
                            set__name=name, set__rating=rating, set__address=address, set__image_url=image_url)
         return {"code": 1, "status": "Ok"}, 200
+
+
+
+
+# TODO:
+# 1. get hotel around long and lat
+# 2. get hotel with rate >= a rate
