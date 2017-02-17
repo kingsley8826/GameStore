@@ -1,4 +1,4 @@
-from mongoengine import Document, FloatField, StringField
+from mongoengine import Document, FloatField, StringField, IntField
 
 
 class Hotel(Document):
@@ -9,3 +9,4 @@ class Hotel(Document):
     rating = FloatField()
     address = StringField()
     image_url = StringField()
+    status = IntField()
