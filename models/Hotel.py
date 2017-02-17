@@ -1,4 +1,4 @@
-from mongoengine import Document, FloatField, StringField, IntField, BooleanField, EmbeddedDocumentField
+from mongoengine import Document, FloatField, StringField, IntField, BooleanField, EmbeddedDocumentField, ListField
 
 class Service(Document):
     wifi = BooleanField()
@@ -19,3 +19,5 @@ class Hotel(Document):
     status = IntField()
     verification = IntField()
     service = EmbeddedDocumentField("Service")
+    images = ListField(StringField())
+
