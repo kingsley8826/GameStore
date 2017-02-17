@@ -1,4 +1,4 @@
-from mongoengine import Document, FloatField, StringField, IntField
+from mongoengine import Document, FloatField, StringField, IntField, BooleanField
 
 
 class Hotel(Document):
@@ -10,3 +10,4 @@ class Hotel(Document):
     address = StringField()
     image_url = StringField()
     status = IntField()
+    verification = IntField()
