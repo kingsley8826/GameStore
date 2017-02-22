@@ -1,7 +1,7 @@
 from flask.ext.restful import reqparse, Resource
 
 from helper.UserHelper import gen_token
-from models.User import User
+from models.user import User
 
 parser = reqparse.RequestParser()
 parser.add_argument("username", type=str, location="json")

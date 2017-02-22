@@ -2,7 +2,7 @@ from flask.ext.restful import Resource
 from flask.ext.restful import reqparse
 
 from config import mlab
-from models.User import User
+from models.user import User
 
 parser = reqparse.RequestParser()
 parser.add_argument("username", type=str, location="json")

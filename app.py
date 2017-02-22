@@ -3,16 +3,16 @@ from flask import Flask
 from config import mlab
 from config import resources
 
+from models.hotelrating import dump_rating
+
 mlab.connect()
 
 app = Flask(__name__)
 resources.config_resources(app)
 
-
 @app.route('/')
 def hello_world():
     return 'Luu ham'
-
 
 # class RatingListRes(Resource):
 #     def get(self): # Get All Rating

@@ -7,7 +7,7 @@ from flask.ext.restful import reqparse
 
 from config import mlab
 
-from models.Hotel import Hotel
+from models.hotel import Hotel
 
 parser = reqparse.RequestParser()
 parser.add_argument("longitude", type=float, location="json")
