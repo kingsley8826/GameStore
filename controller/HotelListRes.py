@@ -10,8 +10,8 @@ parser.add_argument("latitude", type=float, location="json")
 parser.add_argument("telephone_number", type=str, location="json")
 parser.add_argument("name", type=str, location="json")
 parser.add_argument("address", type=str, location="json")
-parser.add_argument("images", type=str, location="json")
-parser.add_argument("rates", type=str, location="json")
+parser.add_argument("image_url", type=str, location="json")
+parser.add_argument("rating", type=float, location="json")
 
 
 class HotelListRes(Resource):
@@ -27,10 +27,10 @@ class HotelListRes(Resource):
         latitude = args["latitude"]
         telephone_number = args["telephone_number"]
         name = args["name"]
-        rates = args["rates"]
+        rating = args["rating"]
         address = args["address"]
-        images = args["images"]
+        image_url = args["image_url"]
         new_hotel = Hotel(longitude=longitude, latitude=latitude, telephone_number=telephone_number,
-                          name=name, rates=rates, address=address, images=images)
+                          image_url=image_url,name=name, rating=rating, address=address, images=images)
         new_hotel.save()
         return mlab.item2json(new_hotel)

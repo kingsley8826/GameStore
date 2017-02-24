@@ -14,9 +14,9 @@ parser.add_argument("longitude", type=float, location="json")
 parser.add_argument("latitude", type=float, location="json")
 parser.add_argument("telephone_number", type=str, location="json")
 parser.add_argument("name", type=str, location="json")
-parser.add_argument("rates", type=float, location="json")
+parser.add_argument("rating", type=float, location="json")
 parser.add_argument("address", type=str, location="json")
-parser.add_argument("images", type=str, location="json")
+parser.add_argument("image_url", type=str, location="json")
 
 
 class HotelRes(Resource):
@@ -66,9 +66,9 @@ class HotelRes(Resource):
         latitude = args["latitude"]
         telephone_number = args["telephone_number"]
         name = args["name"]
-        rates = args["rates"]
+        rating = args["rating"]
         address = args["address"]
-        images = args["images"]
+        image_url = args["image_url"]
         found_hotel.update(set__longitude=longitude, set__latitude=latitude, set__telephone_number=telephone_number,
-                           set__name=name, set__rates=rates, set__address=address, set__images=images)
+                           set__name=name, set__rating=rating, set__address=address, set__image_url=image_url)
         return {"code": 1, "status": "Ok"}, 200
