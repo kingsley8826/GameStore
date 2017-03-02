@@ -1,4 +1,4 @@
-from flask.ext.restful import reqparse, Resource
+from flask_restful import reqparse, Resource
 
 from helper.UserHelper import gen_token
 from models.user import User

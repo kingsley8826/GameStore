@@ -1,5 +1,5 @@
-from flask.ext.restful import Resource
-from flask.ext.restful import reqparse
+from flask_restful import Resource
+from flask_restful import reqparse
 
 from config import mlab
 from models.hotel import Hotel
