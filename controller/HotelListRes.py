@@ -12,6 +12,7 @@ parser.add_argument("name", type=str, location="json")
 parser.add_argument("address", type=str, location="json")
 parser.add_argument("image_url", type=str, location="json")
 parser.add_argument("rating", type=float, location="json")
+parser.add_argument("images", type=list, location="json")
 
 
 class HotelListRes(Resource):
@@ -23,14 +24,15 @@ class HotelListRes(Resource):
 
     def post(self):  # post new hotel
         args = parser.parse_args()
+
         longitude = args["longitude"]
         latitude = args["latitude"]
         telephone_number = args["telephone_number"]
         name = args["name"]
-        rating = args["rating"]
         address = args["address"]
-        image_url = args["image_url"]
+        images = args["images"]
+
         new_hotel = Hotel(longitude=longitude, latitude=latitude, telephone_number=telephone_number,
-                          image_url=image_url,name=name, rating=rating, address=address, images=images)
+                          images=images,name=name, address=address)
         new_hotel.save()
         return mlab.item2json(new_hotel)
