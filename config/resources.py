@@ -5,6 +5,7 @@ from controller.HotelRes import HotelRes
 from controller.UserRes import UserRes
 from controller.HotelRatingRes import HotelRatingRes
 from flask_jwt import JWT, current_identity, jwt_required, JWTError
+import datetime
 
 from controller.Login import *
 
@@ -13,6 +14,7 @@ def config_resources(app):
     api = Api(app)
     app.config['SECRET_KEY'] = 'Xk]ysC8ad1pO!&`AN|Ak1T;=L6ezZ12R'
     app.config["JWT_AUTH_URL_RULE"] = "/api/login"
+    app.config["JWT_EXPIRATION_DELTA"] = datetime.timedelta(hours=48)
     app.handle_user_exception = handle_user_exception_again
     jwt = JWT(
         app=app,

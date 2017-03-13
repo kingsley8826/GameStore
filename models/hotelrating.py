@@ -5,6 +5,7 @@ class HotelRating(Document):
     user = ReferenceField("User")
     hotel = ReferenceField("Hotel")
     rate = IntField()
+    comment = StringField()
 
 def dump_rating():
     print("Dummping rating...")
